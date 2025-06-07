@@ -15,4 +15,5 @@ public class AndroidLauncher extends AndroidApplication {
         configuration.useImmersiveMode = true; // Recommended, but not required.
         initialize(new Main(), configuration);
     }
+
 }

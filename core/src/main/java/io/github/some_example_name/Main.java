@@ -1,11 +1,8 @@
 package io.github.some_example_name;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
@@ -15,7 +12,6 @@ public class Main extends ApplicationAdapter {
 
     @Override
     public void create() {
-        Box2D.init();
         batch = new SpriteBatch();
         image = new Texture("libgdx.png");
     }

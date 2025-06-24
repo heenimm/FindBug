@@ -1,0 +1,99 @@
+@startuml
+
+class io.github.some_example_name.MainGame {
+- SpriteBatch batch
++ SpriteBatch getBatch()
++ void create()
++ void dispose()
+}
+
+
+class io.github.some_example_name.Screens.StartScreen {
+- MainGame game
+- BitmapFont font
++ void show()
++ void render(float)
+}
+
+
+class io.github.some_example_name.GameSettings {
++ {static} float STEP_TIME
++ {static} int VELOCITY_ITERATIONS
++ {static} int POSITION_ITERATIONS
++ {static} int SCREEN_HEIGHT
++ {static} int SCREEN_WIDTH
+}
+
+class io.github.some_example_name.Object.BugObject {
+- Body body
+- boolean poisonous
++ void update()
++ boolean isPoisonous()
++ Rectangle getBounds()
++ Body getBody()
+}
+
+
+class io.github.some_example_name.Object.PersonObject {
+- Body body
++ void update()
++ Rectangle getBounds()
+}
+
+
+class io.github.some_example_name.Screens.GameScreen {
+- MainGame game
+- World world
+- Box2DDebugRenderer debugRenderer
+- OrthographicCamera camera
+- PersonObject player
+- Array<BugObject> bugs
+- void spawnBugs()
++ void show()
++ void render(float)
+}
+
+
+class io.github.some_example_name.Object.GameObject {
+}
+class io.github.some_example_name.ScreenAdapter {
++ void show()
++ void render(float)
++ void resize(int,int)
++ void pause()
++ void resume()
++ void hide()
++ void dispose()
+}
+
+class io.github.some_example_name.Screens.GameOverScreen {
+- MainGame game
+- BitmapFont font
++ void show()
++ void render(float)
++ void resize(int,int)
+}
+
+
+class io.github.some_example_name.Main {
+- SpriteBatch batch
+- Texture image
++ OrthographicCamera camera
++ void create()
++ void render()
++ void dispose()
+}
+
+
+
+
+com.badlogic.gdx.Game <|-- io.github.some_example_name.MainGame
+io.github.some_example_name.ScreenAdapter <|-- io.github.some_example_name.Screens.StartScreen
+com.badlogic.gdx.graphics.g2d.Sprite <|-- io.github.some_example_name.Object.BugObject
+com.badlogic.gdx.graphics.g2d.Sprite <|-- io.github.some_example_name.Object.PersonObject
+io.github.some_example_name.ScreenAdapter <|-- io.github.some_example_name.Screens.GameScreen
+com.badlogic.gdx.Screen <|.. io.github.some_example_name.ScreenAdapter
+io.github.some_example_name.ScreenAdapter <|-- io.github.some_example_name.Screens.GameOverScreen
+com.badlogic.gdx.ApplicationAdapter <|-- io.github.some_example_name.Main
+
+@enduml

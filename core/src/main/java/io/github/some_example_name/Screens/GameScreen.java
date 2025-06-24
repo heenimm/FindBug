@@ -1,7 +1,5 @@
-package io.github.some_example_name.Screen;
+package io.github.some_example_name.Screens;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
@@ -36,7 +34,7 @@ public class GameScreen extends ScreenAdapter {
 
     private void spawnBugs() {
         for (int i = 0; i < 10; i++) {
-            boolean isPoisonous = MathUtils.randomBoolean(0.2f); // 20% шанс быть ядовитым
+            boolean isPoisonous = MathUtils.randomBoolean(0.2f);
             bugs.add(new BugObject(world, new Vector2(MathUtils.random(0, 800), MathUtils.random(0, 600)), isPoisonous));
         }
     }

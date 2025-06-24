@@ -34,7 +34,7 @@ public class GameOverScreen extends ScreenAdapter {
     public void render(float delta) {
         ScreenUtils.clear(Color.RED);
         game.getBatch().begin();
-        font.draw(game.getBatch(), "Игра окончена! Вы собрали ядовитого жука.\nPress key.", 100, 150);
+        font.draw(game.getBatch(), "Игра окончена! \nPress key.", 100, 150);
         game.getBatch().end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {

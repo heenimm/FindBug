@@ -1,14 +1,14 @@
 package io.github.some_example_name.Screens;
 
 import io.github.some_example_name.GameResources;
-import io.github.some_example_name.Main;
+import io.github.some_example_name.MainGame;
 import io.github.some_example_name.ScreenAdapter;
 import io.github.some_example_name.Views.ButtonView;
 import io.github.some_example_name.Views.MovingBackgroundView;
 import io.github.some_example_name.Views.TextView;
 
 public class MenuScreen extends ScreenAdapter {
-    Main myGdxGame;
+    MainGame myGdxGame;
     TextView titleView;
     ButtonView startButtonView;
     ButtonView settingsButtonView;
@@ -16,7 +16,7 @@ public class MenuScreen extends ScreenAdapter {
     MovingBackgroundView backgroundView;
 
 
-    public MenuScreen(Main myGdxGame) {
+    public MenuScreen(MainGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         backgroundView = new MovingBackgroundView(GameResources.BACKGROUND_IMG_PATH);
 

@@ -44,7 +44,7 @@ public class StartScreen extends ScreenAdapter {
 
         mainGame.getBatch().end();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
+        if (Gdx.input.justTouched()) {
             mainGame.setScreen(new GameScreen(mainGame));
         }
     }

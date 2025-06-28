@@ -9,24 +9,25 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import io.github.some_example_name.GameSettings;
 import io.github.some_example_name.MainGame;
 import io.github.some_example_name.Object.BugObject;
 import io.github.some_example_name.Object.PersonObject;
 import io.github.some_example_name.ScreenAdapter;
 
 public class GameScreen extends ScreenAdapter {
-    private final MainGame game;
+    private final MainGame mainGame;
     private World world;
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera camera;
     private PersonObject player;
     private Array<BugObject> bugs;
 
-    public GameScreen(MainGame game) {
-        this.game = game;
+    public GameScreen(MainGame mainGame) {
+        this.mainGame = mainGame;
         world = new World(new Vector2(0, 0), true);
         debugRenderer = new Box2DDebugRenderer();
-        camera = new OrthographicCamera(800, 600);
+        camera = new OrthographicCamera(GameSettings.SCREEN_WIDTH * 2, GameSettings.SCREEN_HEIGHT * 2);
         player = new PersonObject(world);
         bugs = new Array<>();
         spawnBugs();
@@ -41,7 +42,10 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-
+        player.loadTextures();
+        for (BugObject bug : bugs) {
+            bug.loadTextures();
+        }
     }
 
     @Override
@@ -51,22 +55,22 @@ public class GameScreen extends ScreenAdapter {
         player.update();
         for (BugObject bug : bugs) {
             bug.update();
-            if (player.getBounds().overlaps(bug.getBounds())) {
+            if (player.getBounds().overlaps(player.getBounds())) {
                 if (bug.isPoisonous()) {
-                    game.setScreen(new GameOverScreen(game));
+                    mainGame.setScreen(new GameOverScreen(mainGame));
                 } else {
                     bugs.removeValue(bug, true);
                 }
             }
         }
 
-        game.getBatch().setProjectionMatrix(camera.combined);
-        game.getBatch().begin();
-        player.draw(game.getBatch());
+        mainGame.getBatch().setProjectionMatrix(camera.combined);
+        mainGame.getBatch().begin();
+        player.draw(mainGame.getBatch());
         for (BugObject bug : bugs) {
-            bug.draw(game.getBatch());
+//            bug.draw(mainGame.getBatch());
         }
-        game.getBatch().end();
+        mainGame.getBatch().end();
 
         debugRenderer.render(world, camera.combined);
     }

@@ -52,4 +52,7 @@ public class BugObject extends Sprite {
     public Body getBody() {
         return body;
     }
+
+    public void loadTextures() {
+    }
 }

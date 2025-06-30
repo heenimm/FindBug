@@ -1,5 +1,6 @@
 package io.github.some_example_name.Screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import io.github.some_example_name.GameResources;
 import io.github.some_example_name.GameSettings;
 import io.github.some_example_name.MainGame;
 import io.github.some_example_name.Object.BugObject;
@@ -17,7 +19,6 @@ import io.github.some_example_name.ScreenAdapter;
 
 public class GameScreen extends ScreenAdapter {
     private final MainGame mainGame;
-    private World world;
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera camera;
     private PersonObject player;
@@ -25,10 +26,14 @@ public class GameScreen extends ScreenAdapter {
 
     public GameScreen(MainGame mainGame) {
         this.mainGame = mainGame;
-        world = new World(new Vector2(0, 0), true);
         debugRenderer = new Box2DDebugRenderer();
         camera = new OrthographicCamera(GameSettings.SCREEN_WIDTH * 2, GameSettings.SCREEN_HEIGHT * 2);
-        player = new PersonObject(world);
+        player = new PersonObject(
+            GameSettings.SCREEN_WIDTH / 4, 299,
+            GameSettings.PL_WIDTH, GameSettings.PL_HEIGHT,
+            Gdx.files.internal(GameResources.PLAYER_IMG_PATH),
+            mainGame.world
+        );
         bugs = new Array<>();
         spawnBugs();
     }
@@ -36,7 +41,7 @@ public class GameScreen extends ScreenAdapter {
     private void spawnBugs() {
         for (int i = 0; i < 10; i++) {
             boolean isPoisonous = MathUtils.randomBoolean(0.2f);
-            bugs.add(new BugObject(world, new Vector2(MathUtils.random(0, 800), MathUtils.random(0, 600)), isPoisonous));
+            bugs.add(new BugObject(mainGame.world, new Vector2(MathUtils.random(0, 800), MathUtils.random(0, 600)), isPoisonous));
         }
     }
 
@@ -50,8 +55,8 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(Color.DARK_GRAY);
-        world.step(1/60f, 6, 2);
+        ScreenUtils.clear(Color.WHITE);
+        mainGame.world.step(1/60f, 6, 2);
         player.update();
         for (BugObject bug : bugs) {
             bug.update();
@@ -72,6 +77,6 @@ public class GameScreen extends ScreenAdapter {
         }
         mainGame.getBatch().end();
 
-        debugRenderer.render(world, camera.combined);
+        debugRenderer.render(mainGame.world, camera.combined);
     }
 }

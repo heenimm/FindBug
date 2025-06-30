@@ -14,8 +14,6 @@ import io.github.some_example_name.Screens.StartScreen;
 
 public class MainGame extends Game {
     public World world;
-
-
     public Object largeWhiteFont;
     public Object commonBlackFont;
     public OrthographicCamera camera;

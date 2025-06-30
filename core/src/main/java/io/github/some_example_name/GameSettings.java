@@ -10,4 +10,5 @@ public class GameSettings {
     public static final int STARTING_ENEMY_APPEARANCE_COOL_DOWN = 1;
     public static final int PL_WIDTH = 64;
     public static final int PL_HEIGHT = 64;
+    public static final float SHIP_FORCE_RATIO = 13;
 }

@@ -1,9 +1,15 @@
 package io.github.some_example_name;
 
+import static io.github.some_example_name.GameSettings.POSITION_ITERATIONS;
+import static io.github.some_example_name.GameSettings.STEP_TIME;
+import static io.github.some_example_name.GameSettings.VELOCITY_ITERATIONS;
+
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -16,6 +22,7 @@ public class MainGame extends Game {
     public World world;
     public Object largeWhiteFont;
     public Object commonBlackFont;
+    public Vector3 touch;
     public OrthographicCamera camera;
     private SpriteBatch batch;
     public GameScreen gameScreen;
@@ -40,6 +47,16 @@ public class MainGame extends Game {
         gameScreen = new GameScreen(this);
         setScreen(new StartScreen(this));
 
+    }
+
+    public void stepWorld() {
+        float delta = Gdx.graphics.getDeltaTime();
+        float accumulator = delta;
+
+        if (accumulator >= STEP_TIME) {
+            accumulator -= STEP_TIME;
+            world.step(STEP_TIME, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        }
     }
 
     @Override

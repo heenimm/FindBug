@@ -1,35 +1,57 @@
-# Happy Flappy bird
+1. Главная героиня
+   Имя: Лина
+   Характер: Любознательная, смелая, добрая, но немного неуверенная в себе.
+   Внешность: Рыжие кудри, веснушки, рюкзак с лупой и блокнотом.
+   Особенность: Видит мир жуков в увеличенном масштабе (как если бы она была их размера).
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+2. Завязка сюжета
+   Лина приезжает на лето к дедушке-энтомологу в старую деревню Жуково. В первый же день она находит в его доме таинственный дневник с пометкой:
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+"Если найдешь 7 волшебных жуков, откроешь вход в Жукострану — мир, где насекомые говорят и хранят древние секреты".
 
-## Platforms
+Дедушка внезапно исчезает, оставив только записку:
+"Лина, ищи жуков... Они знают правду".
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
-- `android`: Android mobile platform. Needs Android SDK.
+3. Игровой процесс
+   Основная механика:
 
-## Gradle
+Поиск жуков — каждый жук спрятан в уникальном месте (лес, заброшенная мельница, пещера).
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+Загадки — чтобы поймать жука, нужно решить головоломку (пример: "Я летаю только ночью, мои крылья — как бархат. Кто я?" → Жук-носорог).
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `android:lint`: performs Android project validation.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
+Диалоги с насекомыми — найденные жуки дают подсказки о местонахождении дедушки.
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+Особенности жуков:
+
+Светлячок-проводник — освещает путь в темноте.
+
+Жук-часовщик — останавливает время на 10 секунд (для прохождения ловушек).
+
+Паук-шелкопряд — создает мосты из паутины.
+
+Муравей-силач — передвигает тяжелые предметы.
+
+4. Ключевые локации
+   Заброшенная оранжерея — тут живет жук-хамелеон, меняющий цвет. Нужно найти его по отражению в каплях росы.
+
+Подземный город термитов — лабиринт с движущимися стенами.
+
+Луговой театр — место, где жуки разыгрывают спектакли-подсказки.
+
+5. Развитие сюжета
+   Середина игры: Лина узнает, что дедушку похитил коллекционер-злодей, который хочет продать волшебных жуков.
+
+Кульминация: Битва со злодеем в гигантском муравейнике, где Лина использует способности жуков (например, атака пчелиным роем).
+
+Развязка: Дедушка спасен, Жукострана остается под защитой Лины.
+
+6. Финал
+   Лина возвращается домой, но теперь может вызывать жуков в реальном мире (мини-игры после основного сюжета).
+   Последний кадр: Дедушка дарит ей золотую булавку с жуком — символ связи с Жукостраной.
+
+Дополнительные элементы
+Кастомизация: Лина может менять одежду (плащ из листьев, шляпа с сеткой).
+
+Энциклопедия жуков: Игрок собирает информацию о каждом виде.
+
+Мультиплеер: Кооперативный режим, где второй игрок управляет светлячком.
